@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="beerdb"
+        android:enabled="true"
+        android:icon="@drawable/ic_beer"
+        android:shortcutShortLabel="@string/shortcut_beerdb_short"
+        android:shortcutLongLabel="@string/shortcut_beerdb_long">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.knowledgebase"
+            android:targetClass="com.example.knowledgebase.beerdb.BeerDatabaseActivity" />
+
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+</shortcuts>
