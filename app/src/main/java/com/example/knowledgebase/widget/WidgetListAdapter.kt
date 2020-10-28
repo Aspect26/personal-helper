@@ -8,9 +8,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.knowledgebase.R
-import com.example.knowledgebase.widget.models.BasicItem
-import com.example.knowledgebase.widget.models.BasicItemProperty
-import com.example.knowledgebase.widget.utils.image.SetImageAsync
+import com.example.knowledgebase.db.models.BasicItem
+import com.example.knowledgebase.db.models.BasicItemProperty
+import com.example.knowledgebase.utils.image.SetImageAsync
 
 class WidgetListAdapter(private val dataSet: List<BasicItem>) :
     RecyclerView.Adapter<WidgetListAdapter.ViewHolder>() {

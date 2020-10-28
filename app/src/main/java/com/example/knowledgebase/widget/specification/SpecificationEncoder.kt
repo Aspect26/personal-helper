@@ -1,7 +1,7 @@
 package com.example.knowledgebase.widget.specification
 
-import com.example.knowledgebase.widget.models.BasicItem
-import com.example.knowledgebase.widget.models.BasicItemProperty
+import com.example.knowledgebase.db.models.BasicItem
+import com.example.knowledgebase.db.models.BasicItemProperty
 import com.example.knowledgebase.widget.specification.models.WidgetSettings
 import com.example.knowledgebase.widget.specification.models.WidgetSpecification
 import com.example.knowledgebase.widget.specification.models.WidgetType
@@ -70,8 +70,9 @@ object SpecificationEncoder {
 
         return Array(properties.length()) {
             val propertyName = properties.getString(it)
+            val property = propertiesObject.get(propertyName)
 
-            when (val property = propertiesObject.get(propertyName)) {
+            when (property) {
                 is JSONObject -> {
                     BasicItemProperty(property.getString("label"), property.getString("value"))
                 }

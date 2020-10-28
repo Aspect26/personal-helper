@@ -1,4 +1,4 @@
-package com.example.knowledgebase.widget.models
+package com.example.knowledgebase.db.models
 
 data class BasicItem (
     val title: String,

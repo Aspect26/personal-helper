@@ -1,4 +1,4 @@
-package com.example.knowledgebase.widget.utils.image
+package com.example.knowledgebase.utils.image
 
 import java.lang.Exception
 

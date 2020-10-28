@@ -10,7 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.knowledgebase.R
-import com.example.knowledgebase.widget.models.BasicItem
+import com.example.knowledgebase.db.models.BasicItem
 import com.example.knowledgebase.widget.specification.SpecificationEncoder
 import com.example.knowledgebase.widget.specification.models.WidgetSpecification
 
