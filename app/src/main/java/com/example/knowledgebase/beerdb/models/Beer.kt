@@ -1,6 +1,6 @@
 package com.example.knowledgebase.beerdb.models
 
-data class Beer(
+data class Beer (
     val title: String,
     val subtitle: String,
     val degrees: Int?,

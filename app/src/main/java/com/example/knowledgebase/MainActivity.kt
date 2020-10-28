@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.knowledgebase.beerdb.BeerDatabaseActivity
+import com.example.knowledgebase.widget.WidgetActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +13,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onBeerClick(view: View) {
-        val intent = Intent(this, BeerDatabaseActivity::class.java)
+        val intent = Intent(this, WidgetActivity::class.java)
         this.startActivity(intent)
     }
+
 }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.knowledgebase.R
 import com.example.knowledgebase.beerdb.models.Beer
 import com.example.knowledgebase.beerdb.models.Country
+import com.example.knowledgebase.widget.WidgetListAdapter
 
 class BeerDatabaseActivity : AppCompatActivity() {
 
