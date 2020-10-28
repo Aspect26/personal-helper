@@ -5,4 +5,5 @@ data class BasicItem (
     val subtitle: String,
     val image: String,
     val tagImages: Array<String>,
+    val properties: Array<BasicItemProperty>
 )
