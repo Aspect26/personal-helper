@@ -33,7 +33,7 @@ class WidgetListAdapter(private val dataSet: List<BasicItem>) :
         holder.containerView.findViewById<TextView>(R.id.widget_list_item_subtitle).text = item.subtitle
 
         if (item.tagImages.isNotEmpty()) {
-            SetImageAsync.set(holder.containerView.findViewById(R.id.widget_list_item_flag), item.tagImages[0])
+            SetImageAsync.set(holder.containerView.findViewById(R.id.widget_list_item_tag), item.tagImages[0])
         }
 
         if (position % 2 == 1) {

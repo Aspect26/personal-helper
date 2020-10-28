@@ -1,0 +1,5 @@
+package com.example.knowledgebase.widget.specification.models
+
+import com.example.knowledgebase.widget.models.BasicItem
+
+data class WidgetSpecification(val widgetSettings: WidgetSettings, val widgetData: Array<BasicItem>)

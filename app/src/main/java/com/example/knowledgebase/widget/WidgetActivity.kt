@@ -11,8 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.knowledgebase.R
 import com.example.knowledgebase.widget.models.BasicItem
+import com.example.knowledgebase.widget.specification.SpecificationEncoder
+import com.example.knowledgebase.widget.specification.models.WidgetSpecification
 
 class WidgetActivity : AppCompatActivity() {
+
+    lateinit var widgetSpecification: WidgetSpecification
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,14 +32,17 @@ class WidgetActivity : AppCompatActivity() {
             refreshItems(it.toString())
         }
 
+        val specificationString = intent.getStringExtra(INTENT_DATA_SPECIFICATION)
+        this.widgetSpecification = SpecificationEncoder.encode(specificationString)
+
         this.refreshItems()
     }
 
     private fun refreshItems(filter: String = "") {
-        var data = getData()
-
-        if (filter.isNotEmpty()) {
-            data = data.filter { it.title.contains(filter) || it.subtitle.contains(filter) }
+        val data: List<BasicItem> = if (filter.isEmpty()) {
+            widgetSpecification.widgetData.asList()
+        } else {
+            widgetSpecification.widgetData.filter { it.title.contains(filter) || it.subtitle.contains(filter) }
         }
 
         val viewManager = LinearLayoutManager(this)
@@ -58,4 +65,8 @@ class WidgetActivity : AppCompatActivity() {
             BasicItem("Budvar", "Ležák", "url:https://stmedia.stimg.co/ctyp-092320-Beer-Issue-Getty.jpg?w=1200&h=630", arrayOf()),
             BasicItem("Svijany", "Svijanský máz", "url:https://stmedia.stimg.co/ctyp-092320-Beer-Issue-Getty.jpg?w=1200&h=630", arrayOf()),
         )
+
+    companion object {
+        const val INTENT_DATA_SPECIFICATION = "INTENT_DATA_SPECIFICATION"
+    }
 }
