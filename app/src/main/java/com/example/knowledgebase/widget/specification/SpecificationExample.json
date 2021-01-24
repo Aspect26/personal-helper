@@ -1,6 +1,7 @@
 {
   "widget": {
-    "type": "basic"
+    "type": "basic",
+    "itemType": "card"
   },
 
   "data": [

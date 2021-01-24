@@ -2,6 +2,7 @@ package com.example.knowledgebase.widget.specification
 
 import com.example.knowledgebase.db.models.BasicItem
 import com.example.knowledgebase.db.models.BasicItemProperty
+import com.example.knowledgebase.widget.specification.models.ItemType
 import com.example.knowledgebase.widget.specification.models.WidgetSettings
 import com.example.knowledgebase.widget.specification.models.WidgetSpecification
 import com.example.knowledgebase.widget.specification.models.WidgetType
@@ -30,7 +31,13 @@ object SpecificationEncoder {
             else -> throw SpecificationEncodingException("Unknown widget type '$widgetTypeRaw'")
         }
 
-        return WidgetSettings(widgetType)
+        val itemType = when (val itemTypeRaw = getStringOrThrow(widgetSettingsObject, "itemType", "widget.")) {
+            "row" -> ItemType.ROW
+            "card" -> ItemType.CARD
+            else -> ItemType.ROW
+        }
+
+        return WidgetSettings(widgetType, itemType)
     }
 
     private fun getWidgetData(widgetSpecification: JSONObject): Array<BasicItem> {

@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -11,8 +12,9 @@ import com.example.knowledgebase.R
 import com.example.knowledgebase.db.models.BasicItem
 import com.example.knowledgebase.db.models.BasicItemProperty
 import com.example.knowledgebase.utils.image.SetImageAsync
+import com.example.knowledgebase.widget.specification.models.ItemType
 
-class WidgetListAdapter(private val dataSet: List<BasicItem>) :
+class WidgetListAdapter(private val dataSet: List<BasicItem>, private val itemType: ItemType) :
     RecyclerView.Adapter<WidgetListAdapter.ViewHolder>() {
 
     class ViewHolder(
@@ -22,9 +24,11 @@ class WidgetListAdapter(private val dataSet: List<BasicItem>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val textView = layoutInflater.inflate(R.layout.widget_list_item, parent, false)
 
-        return ViewHolder(textView, parent)
+        val itemViewId = if (itemType == ItemType.ROW) R.layout.widget_list_item_row else R.layout.widget_list_item_card
+        val itemView = layoutInflater.inflate(itemViewId, parent, false)
+
+        return ViewHolder(itemView, parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -32,6 +36,8 @@ class WidgetListAdapter(private val dataSet: List<BasicItem>) :
 
         if (item.image.isNotBlank()) {
             SetImageAsync.set(holder.containerView.findViewById(R.id.widget_list_header_image), item.image)
+        } else {
+            holder.containerView.findViewById<ImageView>(R.id.widget_list_header_image).setImageResource(0)
         }
 
         holder.containerView.findViewById<TextView>(R.id.widget_list_item_title).text = item.title
@@ -54,7 +60,7 @@ class WidgetListAdapter(private val dataSet: List<BasicItem>) :
             body.visibility = View.GONE
         }
 
-        if (position % 2 == 1) {
+        if (position % 2 == 1 && this.itemType == ItemType.ROW) {
             holder.containerView.setBackgroundColor(Color.parseColor("#FF79B9EC"))
         } else {
             holder.containerView.setBackgroundColor(Color.WHITE)

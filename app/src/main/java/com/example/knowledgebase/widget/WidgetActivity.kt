@@ -52,7 +52,7 @@ class WidgetActivity : AppCompatActivity() {
 
         findViewById<RecyclerView>(R.id.widget_list).apply {
             layoutManager = viewManager
-            adapter = WidgetListAdapter(data)
+            adapter = WidgetListAdapter(data, widgetSpecification.widgetSettings.itemType)
         }
 
         Log.e("widget_log", data.size.toString())
